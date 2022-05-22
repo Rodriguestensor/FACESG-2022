@@ -36,15 +36,47 @@ namespace CadeMeuMedicoAPP.Repositorios
             }
         }
 
+        //public static Usuario RecuperaUsuarioPorID(long IDUsuario)
+        //{
+        //    try
+        //    {
+        //        using (EntidadesCadeMeuMedicoBDEntities db = new EntidadesCadeMeuMedicoBDEntities())
+        //        {
+        //            //var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
+        //            var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
+        //            return usuario;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        //public static Usuario VerificaSeOUsuarioEstaLogado()
+        //{
+        //    var usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
+        //    if (usuario == null)
+        //    {
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        long iDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(usuario.Values["iDUsuario"]));
+
+        //        var usuarioRetornado = RecuperaUsuarioPorID(iDUsuario);
+        //        return usuarioRetornado;
+
+        //    }
+        //}
         public static Usuario RecuperaUsuarioPorID(long IDUsuario)
         {
             try
             {
                 using (EntidadesCadeMeuMedicoBDEntities db = new EntidadesCadeMeuMedicoBDEntities())
                 {
-                    //var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
-                    var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
-                    return usuario;
+                    var Usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault(); return
+                    Usuario;
                 }
             }
             catch (Exception)
@@ -55,19 +87,18 @@ namespace CadeMeuMedicoAPP.Repositorios
 
         public static Usuario VerificaSeOUsuarioEstaLogado()
         {
-            var usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
-            if (usuario == null)
+            var Usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
+            if (Usuario == null)
             {
                 return null;
             }
             else
             {
-                long iDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(usuario.Values["iDUsuario"]));
-
-                var usuarioRetornado = RecuperaUsuarioPorID(iDUsuario);
-                return usuarioRetornado;
-
+                long IDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(Usuario.Values["IDUsuario"]));
+                var UsuarioRetornado = RecuperaUsuarioPorID(IDUsuario);
+                return UsuarioRetornado;
             }
         }
+
     }
 }

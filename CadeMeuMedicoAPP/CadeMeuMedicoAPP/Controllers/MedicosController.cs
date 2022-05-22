@@ -17,7 +17,7 @@ namespace CadeMeuMedicoAPP.Controllers
             var medicos = db.Medicos.Include("Cidades").Include("Especialidades").ToList();
             return View(medicos);
         }
-
+       
         public ActionResult Adicionar()
         {
             ViewBag.IDCidade = new SelectList(db.Cidades, "IDCidade", "Nome");
