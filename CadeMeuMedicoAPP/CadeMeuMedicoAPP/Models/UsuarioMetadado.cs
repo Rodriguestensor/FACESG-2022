@@ -7,7 +7,7 @@ using System.Web;
 namespace CadeMeuMedicoAPP.Models
 {
     [MetadataType(typeof(UsuarioMetadado))]
-    public partial class Usuario
+    public partial class Usuarios
     {
     }
     
@@ -28,6 +28,7 @@ namespace CadeMeuMedicoAPP.Models
 
         [Required(ErrorMessage = "Obrigatório informar o E-mail")]
         [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 80 caracteres")]
+        [EmailAddress(ErrorMessage = "Digite o E-mail corretamente")]
         public string Email { get; set; }
     }
     

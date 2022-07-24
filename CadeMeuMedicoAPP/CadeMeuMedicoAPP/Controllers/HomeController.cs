@@ -24,7 +24,15 @@ namespace CadeMeuMedicoAPP.Controllers
 
             return View();
         }
+        public ActionResult Buscar(int especialidade, int cidade)
+        {
+           List< Medicos> med = db.Medicos.Where(m => m.IDCidade== cidade && m.IDEspecialidade ==especialidade).ToList();
+            Medicos medico = db.Medicos.Find(especialidade,cidade);
 
-       
+
+            return View(med);
+        }
+
+
     }
 }

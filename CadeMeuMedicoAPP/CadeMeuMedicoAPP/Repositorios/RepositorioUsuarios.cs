@@ -69,14 +69,14 @@ namespace CadeMeuMedicoAPP.Repositorios
 
         //    }
         //}
-        public static Usuario RecuperaUsuarioPorID(long IDUsuario)
+        public static Usuarios RecuperaUsuarioPorID(long IDUsuario)
         {
             try
             {
                 using (EntidadesCadeMeuMedicoBDEntities db = new EntidadesCadeMeuMedicoBDEntities())
                 {
-                    var Usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault(); return
-                    Usuario;
+                    var Usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault(); 
+                    return   Usuario;
                 }
             }
             catch (Exception)
@@ -85,7 +85,7 @@ namespace CadeMeuMedicoAPP.Repositorios
             }
         }
 
-        public static Usuario VerificaSeOUsuarioEstaLogado()
+        public static Usuarios VerificaSeOUsuarioEstaLogado()
         {
             var Usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
             if (Usuario == null)
